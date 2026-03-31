@@ -1,0 +1,53 @@
+/* Main container */
+.buyer-wrapper {
+  padding: 30px;
+  background-color: #f8f9fa;
+}
+
+/* Grid layout - 3 items per row */
+.buyer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* Individual card */
+.buyer-container {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+/* Same image size */
+.buyer-container img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* keeps image same size */
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Hover effect */
+.buyer-container:hover {
+  
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading styling */
+.buyer-container h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Paragraph spacing */
+.buyer-container p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+

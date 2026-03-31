@@ -1,0 +1,80 @@
+body{
+    background: #f4f6fb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Center the form */
+.recommend-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* Card */
+.recommend-card{
+    background:white;
+    padding:40px;
+    width:400px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+/* Title */
+.recommend-card h2{
+    margin-bottom:25px;
+    color:#333;
+}
+
+/* Labels */
+.recommend-card label{
+    display:block;
+    text-align:left;
+    margin-top:15px;
+    font-weight:600;
+}
+
+/* Select inputs */
+.recommend-card select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    transition:0.3s;
+}
+
+/* Hover effect */
+.recommend-card select:hover{
+    border-color:#7b5cff;
+}
+
+/* Button */
+.price-btn{
+    width:100%;
+    padding:12px;
+    margin-top:25px;
+    border:none;
+    border-radius:8px;
+    background:#55004e;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+/* Button hover */
+.price-btn:hover{
+    background:#89038b;
+    transform:scale(1.05);
+}
+
+/* Price result */
+.price-result{
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+    color:#7b5cff;
+}

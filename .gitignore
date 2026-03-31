@@ -1,0 +1,13 @@
+node_modules/
+.env
+
+frontend/node_modules/
+frontend/build/
+
+server/node_modules/
+server/.env
+server/uploads/
+
+ML_Model/*.pkl
+ML_Model/*.csv
+ML_Model/__pycache__/
