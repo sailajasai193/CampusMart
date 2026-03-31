@@ -1,4 +1,4 @@
-# 🛒 CampusMart
+#  CampusMart
 
 **CampusMart** is a **student-focused marketplace platform** that enables users within a campus to **buy, sell, and exchange items easily**. It provides a secure and user-friendly environment for students to list products, connect with buyers, efficiently.  
 
