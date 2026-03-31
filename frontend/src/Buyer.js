@@ -77,7 +77,7 @@ return (
           <p><b>Description:</b> {item.description}</p>
           <p><b>Price:</b> ₹{item.price}</p>
           <p><b>Contact:</b> {item.contactNumber}</p>
-          <a href="https://wa.me/9277829178" target="_blank"  style={{ textDecoration: "none" }}>
+          <a href="https://wa.me/9277829178" target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
   <FaWhatsapp size={20} color="green" />
   <span style={{ color: "green", fontWeight: "bold", fontSize: "15px", marginLeft: "5px" }}>
     Chat on WhatsApp
