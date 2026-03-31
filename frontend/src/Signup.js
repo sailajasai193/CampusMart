@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Signup(){
+    const API = process.env.REACT_APP_API_URL;
     const [formData,SetformData]=useState({
         name:"",
         email:"",
@@ -19,7 +20,7 @@ function Signup(){
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        const response=await fetch("http://localhost:5000/api/auth/register",{
+        const response=await fetch(`${API}/auth/register`,{
             method:"POST",
             headers: {
         "Content-Type": "application/json"
