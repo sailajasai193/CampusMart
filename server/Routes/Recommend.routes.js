@@ -6,8 +6,12 @@ router.post("/recommend", (req, res) => {
 
   const { product, years_used, condition } = req.body;
    console.log("Body:", req.body);
+  const path = require("path");
+
+  const pythonScript = path.join(__dirname, "../ML_Model/predict.py");
+
   const pythonProcess = spawn("python", [
-    "../ML_Model/predict.py",
+    pythonScript,
     product,
     years_used,
     condition
