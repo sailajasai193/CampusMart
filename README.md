@@ -4,6 +4,12 @@
 
 ---
 
+## 🌐 Live Demo
+
+- 🔗 Link: https://campus-mart-livid.vercel.app  
+
+---
+
 ## 🌟 Features
 
 ### 🔐 Authentication
@@ -49,7 +55,7 @@
 | **Backend** | Node.js, Express.js |
 | **Database** | MongoDB |
 | **Authentication** | JWT |
-| **File Uploads** | Multer |
+| **File Uploads** | Multer + Cloudinary |
 | **AI & Recommendations** | Price Prediction Model ( ML-Algorithm: RandomForestRegressor) |
 | **Tools** | Node.js, NPM, VS Code |
 
@@ -103,6 +109,10 @@ Create a .env file inside the server/ folder:
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
+
+CLOUD_NAME=your_cloudinary_name
+CLOUD_API_KEY=your_api_key
+CLOUD_API_SECRET=your_api_secret
 
 Run the Application
 Start Backend
