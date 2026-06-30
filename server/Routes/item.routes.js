@@ -2,88 +2,94 @@ const express = require("express");
 const router = express.Router();
 const sellerModel = require("../Models/Seller");
 const multer = require("multer");
-const path = require("path");
 const authMiddleware = require("../Middlewares/AdminMiddleware");
 
-const storage = multer.diskStorage({
-  destination:function (req, file, cb) {
-    cb(null,"uploads/");
+const cloudinary = require("../config/cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "mentorconnect",
+    allowed_formats: ["jpg", "jpeg", "png", "avif", "webp"],
   },
-  filename:function (req,file,cb) {
-    cb(null, Date.now()+ path.extname(file.originalname));
-  }
 });
 
-const upload = multer({ storage: storage });
-
+const upload = multer({ storage });
 
 router.post("/add", authMiddleware, upload.single("image"), async (req, res) => {
   try {
+      console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
+
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
     const newItem = new sellerModel({
       itemName: req.body.itemName,
       personName: req.body.personName,
       description: req.body.description,
       price: req.body.price,
       contactNumber: req.body.contactNumber,
-      image: req.file.filename,
-      sellerId:req.userId   
+
+      //  Cloudinary URL (IMPORTANT CHANGE)
+      image: req.file.path,
+
+      sellerId: req.userId,
     });
 
     await newItem.save();
 
-    res.json({ message: "Item successfully inserted" });
-
+    res.json({ message: "Item successfully inserted", item: newItem });
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Error uploading item" });
   }
 });
 
+// ---------------- GET MY ITEMS ----------------
 router.get("/all", authMiddleware, async (req, res) => {
   try {
     const items = await sellerModel.find({
       sellerId: req.userId,
-      soldStatus: false
+      soldStatus: false,
     });
+
     res.json(items);
   } catch (err) {
     res.status(500).json({ message: "Error fetching items" });
   }
 });
 
-
-
-router.get("/allitems", authMiddleware,async (req, res) => {
+// ---------------- GET OTHER USERS ITEMS ----------------
+router.get("/allitems", authMiddleware, async (req, res) => {
   try {
     const items = await sellerModel.find({
       soldStatus: false,
-      sellerId: { $ne: req.userId }   
+      sellerId: { $ne: req.userId },
     });
+
     res.json(items);
   } catch (err) {
     res.status(500).json({ message: "Error fetching items" });
   }
 });
 
-
+// ---------------- SOLD ITEMS ----------------
 router.get("/sold", authMiddleware, async (req, res) => {
   try {
-
     const items = await sellerModel.find({
       sellerId: req.userId,
-      soldStatus: true
+      soldStatus: true,
     });
 
     res.json(items);
-
   } catch (err) {
     res.status(500).json({ msg: err.message });
   }
 });
 
-
-
-
+// ---------------- MARK AS SOLD ----------------
 router.put("/sold/:id", authMiddleware, async (req, res) => {
   try {
     const item = await sellerModel.findByIdAndUpdate(

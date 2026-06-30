@@ -83,10 +83,7 @@ return (
     Chat on WhatsApp
   </span>
 </a>
-          <img 
-            src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`} 
-            alt={item.itemName}
-          />
+           <img src={item.image} alt={item.itemName} />
         </div>
       ))}
     </div>

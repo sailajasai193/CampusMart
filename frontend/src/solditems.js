@@ -88,10 +88,7 @@ function SoldItems() {
                 <p><b>Description:</b> {item.description}</p>
                 <p><b>Price:</b> ₹{item.price}</p>
                 <p><b>Contact:</b> {item.contactNumber}</p>
-                <img
-                  src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
-                  alt={item.itemName}
-                />
+                 <img src={item.image} alt={item.itemName} />
 
                 <p style={{ color: "red", fontWeight: "bold" }}>
                   SOLD
