@@ -21,9 +21,9 @@ function Buyer() {
 
  useEffect(() => {
   const url =
-    search === ""
-      ? "http://localhost:5000/api/items/allitems"
-      : `http://localhost:5000/api/searchItem/search?q=${search}`;
+  search === ""
+    ? `${process.env.REACT_APP_API_URL}/api/items/allitems`
+    : `${process.env.REACT_APP_API_URL}/api/searchItem/search?q=${search}`;
 
   fetch(url, {
     headers: {
@@ -77,14 +77,14 @@ return (
           <p><b>Description:</b> {item.description}</p>
           <p><b>Price:</b> ₹{item.price}</p>
           <p><b>Contact:</b> {item.contactNumber}</p>
-          <a href="https://wa.me/9277829178" target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
+          <a href={`https://wa.me/91${item.contactNumber}`} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
   <FaWhatsapp size={20} color="green" />
   <span style={{ color: "green", fontWeight: "bold", fontSize: "15px", marginLeft: "5px" }}>
     Chat on WhatsApp
   </span>
 </a>
           <img 
-            src={`http://localhost:5000/uploads/${item.image}`} 
+            src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`} 
             alt={item.itemName}
           />
         </div>

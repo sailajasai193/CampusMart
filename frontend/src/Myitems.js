@@ -16,7 +16,7 @@ function Myitems(){
   }
 
 useEffect(()=>{
-        fetch("http://localhost:5000/api/items/all",{
+        fetch(`${process.env.REACT_APP_API_URL}/api/items/all`,{
         headers:{
         Authorization:`Bearer ${localStorage.getItem("token")}`
         }
@@ -44,7 +44,7 @@ const handleLogout = () => {
 
   const markSold = (id) => {
 
-    fetch(`http://localhost:5000/api/items/sold/${id}`,{
+    fetch(`${process.env.REACT_APP_API_URL}/api/items/sold/${id}`,{
         headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`
     },
@@ -95,7 +95,7 @@ return (
                 <p><b>Contact:</b> {item.contactNumber}</p>
              
                 <img
-                  src={`http://localhost:5000/uploads/${item.image}`}
+                  src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
                   alt={item.itemName}
                 />
                  <button style={{borderRadius:"5px",height:"30px",border:"0.5px solid black",backgroundColor:"rgb(252, 4, 4)",color:"white"}} disabled={item.soldStatus} onClick={() => markSold(item._id)}>{item.soldStatus ? "Sold" : "Mark as Sold"}</button>

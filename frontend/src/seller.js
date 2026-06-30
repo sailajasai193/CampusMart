@@ -56,7 +56,7 @@ function Seller() {
   data.append("contactNumber", formData.contactNumber);
   data.append("image", formData.image);
  try{
-  const res = await fetch("http://localhost:5000/api/items/add", {
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/api/items/add`, {
     method: "POST",
     headers: {
     Authorization: `Bearer ${localStorage.getItem("token")}`

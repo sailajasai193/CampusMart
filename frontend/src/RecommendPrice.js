@@ -20,7 +20,7 @@ function RecommendPrice(){
 
     const getPrice = async () => {
      
-    const res = await fetch("http://localhost:5000/api/recommend",{
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/recommend`,{
     method:"POST",
     headers:{
     "Content-Type":"application/json"

@@ -13,7 +13,7 @@ function SoldItems() {
     username = decoded.name;
   }
   useEffect(() => {
-    fetch("http://localhost:5000/api/items/sold", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/items/sold`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
@@ -89,7 +89,7 @@ function SoldItems() {
                 <p><b>Price:</b> ₹{item.price}</p>
                 <p><b>Contact:</b> {item.contactNumber}</p>
                 <img
-                  src={`http://localhost:5000/uploads/${item.image}`}
+                  src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
                   alt={item.itemName}
                 />
 
